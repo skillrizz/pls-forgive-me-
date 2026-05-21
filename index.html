@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>I'm Sorry ❤️</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body{
+      font-family: 'Poppins', sans-serif;
+      overflow-x: hidden;
+      background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #fbc2eb, #a18cd1);
+      background-size: 400% 400%;
+      animation: gradient 12s ease infinite;
+    }
+
+    @keyframes gradient{
+      0%{background-position:0% 50%;}
+      50%{background-position:100% 50%;}
+      100%{background-position:0% 50%;}
+    }
+
+    .glass{
+      backdrop-filter: blur(15px);
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.2);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+    }
+
+    .floating{
+      animation: float 4s ease-in-out infinite;
+    }
+
+    @keyframes float{
+      0%,100%{transform:translateY(0px);}
+      50%{transform:translateY(-12px);}
+    }
+
+    .heart{
+      position: fixed;
+      color: rgba(255,255,255,0.8);
+      animation: fall linear forwards;
+      z-index: 0;
+    }
+
+    @keyframes fall{
+      to{
+        transform: translateY(100vh);
+        opacity:0;
+      }
+    }
+
+    .typing{
+      overflow: hidden;
+      border-right: 3px solid white;
+      white-space: nowrap;
+      animation: typing 4s steps(40,end), blink .7s infinite;
+    }
+
+    @keyframes typing{
+      from{width:0}
+      to{width:100%}
+    }
+
+    @keyframes blink{
+      50%{border-color: transparent;}
+    }
+
+    .btn-glow:hover{
+      box-shadow: 0 0 20px rgba(255,255,255,0.8);
+      transform: scale(1.05);
+    }
+
+  </style>
+</head>
+
+<body class="min-h-screen flex items-center justify-center px-4 relative">
+
+  <!-- Floating Hearts -->
+  <script>
+    function createHeart(){
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.innerHTML = "❤";
+      heart.style.left = Math.random() * window.innerWidth + "px";
+      heart.style.fontSize = (Math.random() * 25 + 15) + "px";
+      heart.style.animationDuration = (Math.random() * 4 + 4) + "s";
+
+      document.body.appendChild(heart);
+
+      setTimeout(()=>{
+        heart.remove();
+      },8000);
+    }
+
+    setInterval(createHeart,300);
+  </script>
+
+  <!-- Main Card -->
+  <div class="glass rounded-3xl p-8 md:p-12 max-w-2xl text-center text-white relative z-10 floating">
+
+    <!-- Cute Emoji -->
+    <div class="text-7xl mb-6 animate-bounce">
+      🥺💖
+    </div>
+
+    <!-- Heading -->
+    <h1 class="text-4xl md:text-6xl font-bold mb-6">
+      I'm Really Sorry
+    </h1>
+
+    <!-- Typing Text -->
+    <div class="mx-auto w-fit mb-6">
+      <p class="typing text-lg md:text-2xl font-medium">
+        To the Cutest Girl in the World 💕
+      </p>
+    </div>
+
+    <!-- Message -->
+    <p class="text-base md:text-xl leading-relaxed text-pink-50 mb-8">
+      I know I made mistakes, and I truly regret hurting you.  
+  You are one of the most precious people in my life, and seeing you upset breaks my heart.  
+  I never wanted my words or actions to cause you pain.  
+  No matter what happens, my care for you will always stay real and genuine.  
+  I’m truly sorry, and I just hope you can give me one chance to fix everything and bring your beautiful smile back again. ❤️
+    </p>
+
+    <!-- Cute Quote -->
+    <div class="bg-white/10 rounded-2xl p-4 mb-8">
+      <p class="italic text-pink-100">
+       “I never want my mistakes to become the reason I lose you.” 🥺     
+      </p>
+    </div>
+
+    <!-- Buttons -->
+    <div class="flex flex-col md:flex-row gap-4 justify-center">
+
+      <button onclick="forgiveMessage()"
+        class="btn-glow bg-white text-pink-600 font-bold px-8 py-3 rounded-full transition duration-300">
+        Forgive Me? 💖
+      </button>
+
+      <button onclick="hugMessage()"
+        class="btn-glow bg-pink-500 text-white font-bold px-8 py-3 rounded-full transition duration-300">
+        One Hug? 🫂
+      </button>
+
+    </div>
+
+    <!-- Hidden Message -->
+    <div id="hiddenMessage" class="hidden mt-8">
+      <p class="text-2xl font-semibold text-yellow-200">
+        YAYYY!! 💕  
+        You just made my world beautiful again ✨
+      </p>
+    </div>
+
+  </div>
+
+  <!-- Music -->
+  <audio autoplay loop>
+  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3?filename=romantic-love-112199.mp3" type="audio/mp3">
+</audio>
+
+  <script>
+    function forgiveMessage(){
+      document.getElementById("hiddenMessage").classList.remove("hidden");
+    }
+
+    function hugMessage(){
+      alert("Sending the warmest virtual hug ever 🫂💖");
+    }
+  </script>
+
+</body>
+</html>
